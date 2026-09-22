@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Rules — A Lookbook on Boys' Fashion Today</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --off-black:#111316;
+    --electric:#3d5cff;
+    --acid:#c6ff3d;
+    --grey:#8b8f97;
+    --paper:#f4f4f2;
+    --card:#1a1d22;
+    --line: rgba(255,255,255,0.1);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--off-black);
+    color:var(--paper);
+    font-family:'Space Grotesk', sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3,.disp{
+    font-family:'Archivo Black', sans-serif;
+    font-weight:400;
+    color:var(--paper);
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+  }
+
+  /* ===== layout shell: sidebar + main grid, not a single centered column ===== */
+  .shell{
+    display:grid;
+    grid-template-columns: 220px 1fr;
+    min-height:100vh;
+  }
+  .sidebar{
+    background:var(--card);
+    border-right:1px solid var(--line);
+    padding:28px 22px;
+    position:sticky;
+    top:0;
+    align-self:start;
+    height:100vh;
+  }
+  .sidebar .mark{
+    font-family:'Archivo Black', sans-serif;
+    font-size:1.05rem;
+    color:var(--acid);
+    margin-bottom:6px;
+  }
+  .sidebar .sub{ font-size:0.75rem; color:var(--grey); margin-bottom:34px; }
+  .sidebar nav a{
+    display:block;
+    color:var(--grey);
+    text-decoration:none;
+    font-size:0.85rem;
+    padding:9px 0;
+    border-bottom:1px solid var(--line);
+    transition:color .15s;
+  }
+  .sidebar nav a:hover{ color:var(--acid); }
+  .sidebar .meta{
+    margin-top:36px;
+    font-size:0.72rem;
+    color:var(--grey);
+    line-height:1.8;
+  }
+
+  .main{ padding:0 0 60px; }
+
+  /* hero: full-bleed split, not centered hero text */
+  .hero{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    min-height:78vh;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-text{
+    padding: 60px 56px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .hero-text .eyebrow{
+    color:var(--acid);
+    font-size:0.8rem;
+    letter-spacing:0.08em;
+    margin-bottom:18px;
+  }
+  .hero-text h1{
+    font-size:clamp(2.6rem,5vw,4.6rem);
+    line-height:0.98;
+    margin:0 0 24px;
+  }
+  .hero-text .dek{
+    color:var(--grey);
+    font-size:1.05rem;
+    max-width:42ch;
+    margin:0 0 26px;
+  }
+  .hero-text .tags{ display:flex; flex-wrap:wrap; gap:8px; }
+  .tag{
+    border:1px solid var(--line);
+    color:var(--grey);
+    font-size:0.75rem;
+    padding:5px 12px;
+    border-radius:20px;
+  }
+  .hero-visual{
+    background: var(--electric);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-visual svg{ width:100%; height:100%; display:block; }
+
+  /* content: asymmetric modular grid instead of a single reading column */
+  .grid-section{
+    display:grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    padding: 56px 56px 10px;
+    border-bottom:1px solid var(--line);
+  }
+  .grid-section .head{
+    grid-column: 1 / 13;
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:26px;
+  }
+  .grid-section .head h2{ font-size:clamp(1.6rem,3vw,2.3rem); margin:0; }
+  .grid-section .head .idx{ color:var(--electric); font-family:'Archivo Black',sans-serif; font-size:0.9rem; }
+
+  .col-7{ grid-column: span 7; }
+  .col-5{ grid-column: span 5; }
+  .col-6{ grid-column: span 6; }
+  .col-4{ grid-column: span 4; }
+  .col-12{ grid-column: span 12; }
+
+  p{ color:var(--grey); margin:0 0 16px; font-size:0.98rem; }
+  p strong{ color:var(--paper); }
+  mark{ background:var(--acid); color:var(--off-black); padding:0 4px; }
+
+  .stat-block{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:22px;
+  }
+  .stat-block .big{
+    font-family:'Archivo Black',sans-serif;
+    font-size:2.4rem;
+    color:var(--acid);
+    display:block;
+    line-height:1;
+    margin-bottom:10px;
+  }
+  .stat-block .lbl{ font-size:0.85rem; color:var(--grey); }
+
+  .trend-list{ list-style:none; padding:0; margin:0; }
+  .trend-list li{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .trend-list li .name{ font-family:'Archivo Black',sans-serif; font-size:1.05rem; }
+  .trend-list li .desc{ color:var(--grey); font-size:0.85rem; max-width:34ch; text-align:right; }
+
+  .swatch-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .swatch{
+    aspect-ratio:1;
+    border-radius:4px;
+    display:flex;
+    align-items:flex-end;
+    padding:12px;
+    font-family:'Archivo Black',sans-serif;
+    font-size:0.85rem;
+    color:var(--off-black);
+  }
+
+  blockquote{
+    grid-column: 1 / 13;
+    margin: 10px 0 0;
+    padding: 28px 0;
+    border-top:1px solid var(--line);
+    font-family:'Archivo Black',sans-serif;
+    font-size:clamp(1.3rem,3vw,2rem);
+    color:var(--paper);
+    text-transform:none;
+    line-height:1.3;
+  }
+  blockquote span{ color:var(--electric); }
+
+  .checklist{ list-style:none; padding:0; margin:0; }
+  .checklist li{
+    display:flex; gap:14px;
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+    color:var(--grey);
+    font-size:0.95rem;
+  }
+  .checklist .n{
+    font-family:'Archivo Black',sans-serif;
+    color:var(--electric);
+    flex:0 0 30px;
+  }
+
+  footer{
+    padding:40px 56px 60px;
+    color:var(--grey);
+    font-size:0.85rem;
+  }
+  footer .tag-lg{
+    color:var(--acid);
+    font-family:'Archivo Black',sans-serif;
+    font-size:1.1rem;
+    display:block;
+    margin-bottom:14px;
+    text-transform:uppercase;
+  }
+  footer p{ max-width:60ch; }
+
+  @media (max-width: 900px){
+    .shell{ grid-template-columns: 1fr; }
+    .sidebar{ position:relative; height:auto; }
+    .hero{ grid-template-columns:1fr; }
+    .grid-section{ padding:40px 24px; }
+    .col-7,.col-5,.col-6,.col-4{ grid-column: span 12; }
+    .hero-text{ padding:40px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="mark">NEW RULES</div>
+    <div class="sub">boys' fashion, issue 07</div>
+    <nav>
+      <a href="#shift">The Shift</a>
+      <a href="#trends">What's Trending</a>
+      <a href="#palette">The Palette</a>
+      <a href="#buy">How To Actually Shop</a>
+      <a href="#mistakes">What To Skip</a>
+      <a href="#close">Closing Note</a>
+    </nav>
+    <div class="meta">
+      read time<br>~8 minutes<br><br>
+      filed under<br>style / culture
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <section class="hero">
+      <div class="hero-text">
+        <span class="eyebrow">STYLE & CULTURE — ISSUE 07</span>
+        <h1>Boys Don't<br>Dress Like<br>That Anymore</h1>
+        <p class="dek">Oversized fits, unexpected colour, hand-me-down sneakers worn on purpose — the rulebook for how boys dress has quietly been rewritten. Here's what's actually changed, and why it matters more than it looks.</p>
+        <div class="tags">
+          <span class="tag">streetwear</span>
+          <span class="tag">gender norms</span>
+          <span class="tag">thrifted style</span>
+          <span class="tag">kidswear</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="500" height="600" fill="#3d5cff"/>
+          <!-- abstract figure in oversized silhouette -->
+          <circle cx="250" cy="150" r="46" fill="#111316"/>
+          <path d="M150 260 C150 220 350 220 350 260 L370 460 L130 460 Z" fill="#c6ff3d"/>
+          <rect x="140" y="440" width="90" height="120" fill="#111316"/>
+          <rect x="270" y="440" width="90" height="120" fill="#111316"/>
+          <rect x="130" y="550" width="110" height="30" rx="8" fill="#f4f4f2"/>
+          <rect x="260" y="550" width="110" height="30" rx="8" fill="#f4f4f2"/>
+          <!-- crossbody bag -->
+          <line x1="180" y1="230" x2="320" y2="330" stroke="#111316" stroke-width="6"/>
+          <rect x="290" y="310" width="60" height="50" rx="6" fill="#f4f4f2"/>
+          <!-- graphic accents -->
+          <circle cx="90" cy="90" r="26" fill="#c6ff3d" opacity="0.5"/>
+          <circle cx="440" cy="520" r="34" fill="#111316" opacity="0.4"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="grid-section" id="shift">
+      <div class="head">
+        <h2>The Shift</h2>
+        <span class="idx">01</span>
+      </div>
+      <div class="col-7">
+        <p class="lede" style="color:var(--paper); font-size:1.05rem;">For most of the last century, boys' clothing sat inside a pretty narrow box: blue, grey, sport logos, fitted, done. That box has been slowly cracking open — not because a trend cycle demanded it, but because the people wearing the clothes started asking for something different.</p>
+        <p>Pastels, prints, and cuts once filed under "girls' section" now sit comfortably on boys' racks. Oversized fits borrowed from skate and hip-hop culture replaced the snug, sporty silhouette that dominated for decades. And thrifted, worn-in pieces are now a flex, not a compromise.</p>
+        <p>None of this happened overnight. It's the result of streetwear going mainstream, a generation of parents less attached to rigid "boy colours," and social platforms where kids see style choices from peers worldwide, not just the mall down the street.</p>
+      </div>
+      <div class="col-5">
+        <div class="stat-block" style="margin-bottom:16px;">
+          <span class="big">61%</span>
+          <span class="lbl">of Gen Z shoppers say they buy clothing regardless of the gender section it's marketed in, per recent retail survey data</span>
+        </div>
+        <div class="stat-block">
+          <span class="big">2x</span>
+          <span class="lbl">growth in resale/thrifted kidswear purchases over the past few years, outpacing new-clothing growth</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-section" id="trends">
+      <div class="head">
+        <h2>What's Actually Trending</h2>
+        <span class="idx">02</span>
+      </div>
+      <div class="col-12">
+        <ul class="trend-list">
+          <li>
+            <span class="name">Oversized everything</span>
+            <span class="desc">Boxy tees, baggy jeans, roomy hoodies — fit has loosened up across nearly every category.</span>
+          </li>
+          <li>
+            <span class="name">Colour without apology</span>
+            <span class="desc">Lavender, sage, and soft pink now sit next to navy and grey without a second thought.</span>
+          </li>
+          <li>
+            <span class="name">Sneaker culture, younger</span>
+            <span class="desc">Limited drops and collector mindset have trickled down from adult sneakerheads to ten-year-olds.</span>
+          </li>
+          <li>
+            <span class="name">Layering as personality</span>
+            <span class="desc">One outfit, three textures — a graphic tee, an open shirt, a jacket tied at the waist.</span>
+          </li>
+          <li>
+            <span class="name">Thrifted and proud</span>
+            <span class="desc">A worn vintage band tee or a hand-me-down jacket now reads as taste, not necessity.</span>
+          </li>
+          <li>
+            <span class="name">Accessories, finally</span>
+            <span class="desc">Crossbody bags, beaded bracelets, and caps have moved from "extra" to expected.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <blockquote style="padding: 0 56px 40px;">the biggest style shift isn't a specific item — it's boys getting <span>permission</span> to actually have a preference.</blockquote>
+
+    <section class="grid-section" id="palette">
+      <div class="head">
+        <h2>The Palette Right Now</h2>
+        <span class="idx">03</span>
+      </div>
+      <div class="col-12">
+        <div class="swatch-grid">
+          <div class="swatch" style="background:#e8d9c4;">Warm Sand</div>
+          <div class="swatch" style="background:#9fb8a0;">Sage</div>
+          <div class="swatch" style="background:#c6ff3d;">Acid Lime</div>
+          <div class="swatch" style="background:#3d5cff;">Electric Blue</div>
+          <div class="swatch" style="background:#d9a9b0;">Dusty Rose</div>
+          <div class="swatch" style="background:#2b2d32; color:#f4f4f2;">Off-Black</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-section" id="buy">
+      <div class="head">
+        <h2>How To Actually Shop This</h2>
+        <span class="idx">04</span>
+      </div>
+      <div class="col-6">
+        <p>You don't need to overhaul a wardrobe to catch up — a few smart swaps do most of the work:</p>
+        <ul class="checklist">
+          <li><span class="n">01</span><span>Size up one graphic tee or hoodie instead of buying fitted — instant, low-cost update to the silhouette.</span></li>
+          <li><span class="n">02</span><span>Add one unexpected colour piece to an otherwise neutral rotation — a sage jacket, a lavender cap.</span></li>
+          <li><span class="n">03</span><span>Check a thrift or resale app before buying new sneakers — better pieces, lower cost, less waste.</span></li>
+        </ul>
+      </div>
+      <div class="col-6">
+        <ul class="checklist">
+          <li><span class="n">04</span><span>Let one accessory do the talking — a bag, bracelet stack, or cap, rather than five competing pieces.</span></li>
+          <li><span class="n">05</span><span>Buy for how he actually wants to look, not the section a store has filed it under.</span></li>
+          <li><span class="n">06</span><span>Keep one or two "old favourite" pieces in rotation — genuinely worn-in clothes always read better than new.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid-section" id="mistakes">
+      <div class="head">
+        <h2>What To Skip</h2>
+        <span class="idx">05</span>
+      </div>
+      <div class="col-4">
+        <div class="stat-block">
+          <span class="lbl" style="color:var(--paper); font-size:0.95rem;">Buying an entire trend-driven wardrobe at once — most of it will feel dated before it's outgrown.</span>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="stat-block">
+          <span class="lbl" style="color:var(--paper); font-size:0.95rem;">Ignoring comfort for a look — a great fit he won't actually move in gets worn once, then shelved.</span>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="stat-block">
+          <span class="lbl" style="color:var(--paper); font-size:0.95rem;">Overriding his own picks constantly — style confidence is built by making some choices himself, wins and misses included.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-section" id="close" style="border-bottom:none;">
+      <div class="head">
+        <h2>Closing Note</h2>
+        <span class="idx">06</span>
+      </div>
+      <div class="col-7">
+        <p style="color:var(--paper); font-size:1.05rem;">What's really shifted here isn't hemlines or sneaker drops — it's the idea that boys get to have an actual point of view about how they look, the same way it's always been assumed girls do. The clothes are just the visible part.</p>
+        <p>If you take one thing from this: next time you're shopping together, let him pick the piece that feels most "him," even if it's not what you'd have chosen. That's where real style — not just trend-following — actually starts.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <span class="tag-lg">End of Issue 07 — New Rules</span>
+  <p>Figures referenced from public retail and resale-market survey data on shifting kidswear and Gen Z shopping habits. Treat this as a cultural reader, not a styling authority — trends move fast, personal taste moves faster.</p>
+</footer>
+
+</body>
+</html>
